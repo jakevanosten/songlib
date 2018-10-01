@@ -124,14 +124,15 @@ public class SongLibApp extends Application {
 		BorderPane borderPane = new BorderPane(splitPane);
 		borderPane.setBottom(new MenuBar(new Menu("Song Library")));
 		
-		Button button1 = new Button("Add");
-		Button button2 = new Button("Edit");
-		Button button3 = new Button("Delete");
+		//Button button1 = new Button("Add");
+		//Button button2 = new Button("Edit");
+		//Button button3 = new Button("Delete");
 		
 		HBox pane2 = new HBox();
-		pane2.getChildren().add(button1);
-		pane2.getChildren().add(button2);
-		pane2.getChildren().add(button3);
+		pane2.getChildren().add(new Label("Button PlaceHolder"));
+		//pane2.getChildren().add(button1);
+		//pane2.getChildren().add(button2);
+		//pane2.getChildren().add(button3);
 		borderPane.setBottom(pane2);
 		
 		VBox vbox = new VBox();
