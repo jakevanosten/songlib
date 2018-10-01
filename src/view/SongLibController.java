@@ -16,9 +16,9 @@ public class SongLibController {
 	/* controller: deals with event handling logic */
 	
 	/* FXML Widget IDs that will format the widgets within bottom HBox */
-	@FXML Button add;
-	@FXML Button delete;
-	@FXML Button edit;
+		//@FXML Button add;
+		//@FXML Button delete;
+		//@FXML Button edit;
 	
 		
 	
