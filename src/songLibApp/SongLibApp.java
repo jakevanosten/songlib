@@ -1,4 +1,4 @@
-package app;
+package songLibApp;
 
 import java.io.IOException;
 
@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TableView;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
@@ -115,8 +116,8 @@ public class SongLibApp extends Application {
 		
 		/* Actual START */
 		
-		//SplitPane splitPane = new SplitPane(new TableView(), new VBox(new Label("Current Song Details")));
-		SplitPane splitPane = new SplitPane();
+		SplitPane splitPane = new SplitPane(new TableView(), new VBox(new Label("Current Song Details")));
+		//SplitPane splitPane = new SplitPane();
 		
 		
 		splitPane.setOrientation(Orientation.HORIZONTAL);

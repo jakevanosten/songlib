@@ -1,4 +1,4 @@
-package app;
+package songLibApp;
 
 
 import javafx.beans.property.SimpleStringProperty;
