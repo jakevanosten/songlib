@@ -29,20 +29,24 @@
 	</left>
 	
 	<right>
-		<VBox fx:id="songInfo" prefWidth="300.0" BorderPane.alignment="CENTER">
-			<children>
-			<!-- USE SOMETHING OTHER THAN LABEL -->
-				<Label text = "Song Title:"/>
-				<Label text = "Artist:"/>
-				<Label text = "Album:"/>
-				<Label text = "Year:"/>
-			</children>
-			</VBox>
+		<GridPane fx:id="songDetails" prefWidth="200.0" hgap="10" vgap="10">
+			<Text text="Title: " GridPane.valignment="BOTTOM" />
+			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<Text text="Artist: " GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
+			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<Text text="Album: " GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
+			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<Text text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
+			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<padding>
+				<Insets bottom="10" left="10" right="10" top="10" />
+			</padding>
+		</GridPane>
 	</right>
 	
 	<bottom>
 		<!-- maybe fix alignment and spacing to center under songlist -->
-		<HBox fx:id="songInfo" prefHeight="60.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+		<HBox fx:id="buttonBar" prefHeight="60.0" prefWidth="300.0" BorderPane.alignment="CENTER">
 			<children>
 				<Button fx:id="buttAdd" onAction="#add" text="Add"/>
 				<Button fx:id="buttEdit" onAction="#edit" text="Edit"/>
