@@ -5,29 +5,65 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.text.Text?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
 
 <BorderPane 
 	xmlns="http://javafx.com/javafx/8.0.60" 
 	xmlns:fx="http://javafx.com/fxml/1" 
 	fx:controller="songLibApp.SongLibController">
 	
-<!--  	<left>
-		<ListView fx:id ="songList"/>
+	<left>
+		 <TableView 
+      fx:id="songList" 
+      editable="true" 
+      layoutX="14.0" 
+      layoutY="14.0" 
+      prefHeight="600.0" 
+      prefWidth="400.0">
+         <columns>
+            <TableColumn 
+            fx:id="titlecol" 
+            prefWidth="225.0" 
+            text="Title" />
+            <TableColumn 
+            fx:id="artistcol" 
+            prefWidth="175.0" 
+            text="Artist" />
+         </columns>
+      </TableView>
 	</left>
 	
 	<right>
-		<VBox fx:id="songInfo"/>
+		<VBox fx:id="songInfo" prefWidth="300.0" BorderPane.alignment="CENTER">
+			<children>
+			<!-- USE SOMETHING OTHER THAN LABEL -->
+				<Label text = "Song Title:"/>
+				<Label text = "Artist:"/>
+				<Label text = "Album:"/>
+				<Label text = "Year:"/>
+			</children>
+			</VBox>
 	</right>
 	
 	<bottom>
-		<Button fx:id="buttAdd" onAction="#add" text="Add"/>
-		<Button fx:id="buttEdit" onAction="#edit" text="Edit"/>
-		<Button fx:id="buttDelete" onAction="#delete" text="Delete"/>
+		<!-- maybe fix alignment and spacing to center under songlist -->
+		<HBox fx:id="songInfo" prefHeight="60.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+			<children>
+				<Button fx:id="buttAdd" onAction="#add" text="Add"/>
+				<Button fx:id="buttEdit" onAction="#edit" text="Edit"/>
+				<Button fx:id="buttDelete" onAction="#delete" text="Delete"/>
+			</children>
+		</HBox>
 	</bottom>
 	
 	<padding>
 		<Insets bottom="10" left="10" right="10" top="10" />
 	</padding>
--->
+
 </BorderPane>
