@@ -10,8 +10,7 @@
 <BorderPane 
 	xmlns="http://javafx.com/javafx/8.0.60" 
 	xmlns:fx="http://javafx.com/fxml/1" 
-	fx:controller="songLibApp.songLibController"
-	hgap="10" vgap="10">
+	fx:controller="songLibApp.SongLibController">
 	
 <!--  	<left>
 		<ListView fx:id ="songList"/>

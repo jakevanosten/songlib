@@ -36,12 +36,16 @@ public class SongLibApp extends Application {
 		
 		/*---- Loading in FXML and starting up the scene ----*/
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("/songLibApp/SongLib.fxml"));
-		BorderPane root = (BorderPane)loader.load();
-		//Scene scene = new Scene(root);
-		//primaryStage.setScene(scene);
-		//primaryStage.setTitle("Song Library");  
-		//primaryStage.show();
+		loader.setLocation(getClass().getResource("SongLib.fxml"));
+		BorderPane root = (BorderPane) loader.load();
+		
+		SongLibController libraryController = loader.getController();
+		libraryController.start(primaryStage);
+		
+		Scene scene = new Scene(root);
+		primaryStage.setScene(scene);
+		primaryStage.setTitle("Song Library");  
+		primaryStage.show();
 		
 	}
 	
