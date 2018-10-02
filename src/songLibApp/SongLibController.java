@@ -4,12 +4,15 @@ import java.util.Optional;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -44,7 +47,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.control.TableColumn.CellEditEvent;
-
+import javafx.fxml.FXMLLoader;
 
 
 
@@ -53,34 +56,41 @@ public class SongLibController {
 	/* controller: deals with event handling logic */
 	
 	/* FXML Widget IDs that will format the widgets within bottom HBox */
-		//@FXML Button add;
-		//@FXML Button delete;
-		//@FXML Button edit;
+		@FXML Button buttAdd;
+		@FXML Button buttDelete;
+		@FXML Button buttEdit;
 	
+
 	private TableView<Song> library;
 	private ObservableList<Song> data;
 	
 	public void start(Stage primaryStage) {
+	
+		/*----- Song Library Title Label -----*/
+		Label label = new Label("Song Library");
+		label.setTextFill(Color.FIREBRICK);
+		label.setFont(Font.font("Calibri", FontWeight.BOLD, 36));
+		HBox titleBox = new HBox();
+		titleBox.setAlignment(Pos.CENTER);
+		titleBox.getChildren().add(label);
+	
+		/*----- Table view, data, columns and other properties -----*/
+		library = new TableView<>();
+		data = getInitialTableData();
+		library.setItems(data);
 
+	}
 	
-	/*----- Song Library Title Label -----*/
-	Label label = new Label("Song Library");
-	label.setTextFill(Color.FIREBRICK);
-	label.setFont(Font.font("Calibri", FontWeight.BOLD, 36));
-	HBox titleBox = new HBox();
-	titleBox.setAlignment(Pos.CENTER);
-	titleBox.getChildren().add(label);
+	public void add(ActionEvent e) {
+		//adds new song to songlist
+	}
 	
-	/*----- Table view, data, columns and other properties -----*/
-	library = new TableView<>();
-	data = getInitialTableData();
-	library.setItems(data);
+	public void edit(ActionEvent e) {
+		//edits fields of specific selected song
+	}
 	
-	
-	
-
-	
-	
+	public void delete(ActionEvent e) {
+		//removes a song from the songlist
 	}
 	
 	private ObservableList<Song> getInitialTableData() {
@@ -95,8 +105,6 @@ public class SongLibController {
 
 		return data;
 	}
-	
-		
 	
 	
 }

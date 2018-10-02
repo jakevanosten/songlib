@@ -5,6 +5,7 @@ import java.io.IOException;
 //import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
@@ -32,6 +33,23 @@ public class SongLibApp extends Application {
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException {
+		
+		/*---- Loading in FXML and starting up the scene ----*/
+		FXMLLoader loader = new FXMLLoader();
+		loader.setLocation(getClass().getResource("/songLibApp/SongLib.fxml"));
+		BorderPane root = (BorderPane)loader.load();
+		//Scene scene = new Scene(root);
+		//primaryStage.setScene(scene);
+		//primaryStage.setTitle("Song Library");  
+		//primaryStage.show();
+		
+	}
+	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
+		
 		/*FXMLLoader loader = new FXMLLoader();   
 		loader.setLocation(
 				getClass().getResource("/view/SongLib.fxml"));
@@ -115,7 +133,7 @@ public class SongLibApp extends Application {
 	*/
 		
 		/* Actual START */
-		
+		/*
 		SplitPane splitPane = new SplitPane(new TableView(), new VBox(new Label("Current Song Details")));
 		//SplitPane splitPane = new SplitPane();
 		
@@ -149,39 +167,6 @@ public class SongLibApp extends Application {
 		primaryStage.setTitle("Song Library");
 		primaryStage.show();
 		
-		
-		
-		
-		
-		
-		
-		
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-				
-		
-	}
-
-	public static void main(String[] args) {
-		launch(args);
-	}
+		*/
 
 }
