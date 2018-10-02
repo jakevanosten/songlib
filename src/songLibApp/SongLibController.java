@@ -46,6 +46,7 @@ import javafx.geometry.Pos;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -66,27 +67,11 @@ public class SongLibController {
 		@FXML TableView<Song> songList; 
 		@FXML TableColumn<Song, String> titlecol;
 		@FXML TableColumn<Song, String> artistcol;
-	 
-	
-	  
-	
 	
 	
 	@SuppressWarnings("unchecked")
-	public void start(Stage primaryStage) {
-	
-		
-		/*----- Song Library Title Label -----*/
-			/*
-				Label label = new Label("Song Library");
-				label.setTextFill(Color.FIREBRICK);
-				label.setFont(Font.font("Calibri", FontWeight.BOLD, 36));
-				HBox titleBox = new HBox();
-				titleBox.setAlignment(Pos.CENTER);
-				titleBox.getChildren().add(label);
-			 */
-		
-		
+	public void start(Stage primaryStage) throws IOException {
+			
 		/*----- PREPARES THE COLUMNS for DATA INPUT -----*/
 		/*---- DEFAULT DATA LIVES IN DATASOURCE CLASS -----*/
 		PropertyValueFactory<Song, String> songTitleProperty = 
@@ -101,12 +86,15 @@ public class SongLibController {
 	      DataSource data = new DataSource();
 	      ObservableList<Song> tableItems = data.getData();
 	      songList.setItems(tableItems);
-	            
-		
-		  
-		
+	     	
 		
 	}
+	
+	public void selectSong(ActionEvent e) {
+		Song s = (Song)e.getSource();
+		
+	}
+	
 	
 	public void add(ActionEvent e) {
 		//adds new song to songlist
@@ -121,21 +109,5 @@ public class SongLibController {
 	}
 
 	
-	
-	
-	/*
-	private ObservableList<Song> getInitialTableData() {
-		
-		List<Song> list = new ArrayList<>();
-		
-		list.add(new Song("Versace On The Floor", "Bruno Mars", "24K Magic", "2016"));
-		list.add(new Song("24k Magic", "Bruno Mars", "24K Magic", "2016"));
-		list.add(new Song("Finesse", "Bruno Mars", "24K Magic", "2016"));
-		
-		ObservableList<Song> data = FXCollections.observableArrayList(list);
-
-		return data;
-	}
-	*/
 	
 }

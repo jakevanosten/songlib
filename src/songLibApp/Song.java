@@ -20,6 +20,8 @@ public class Song {
 	public Song(String s1, String s2){
 		songTitle = new SimpleStringProperty(s1);
 		songArtist = new SimpleStringProperty(s2);
+		albumTitle = new SimpleStringProperty("Not listed");
+		albumYear = new SimpleStringProperty("Not listed");
 	}
 	
 	/*Constructor if all song fields are provided*/
