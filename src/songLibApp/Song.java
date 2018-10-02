@@ -35,7 +35,7 @@ public class Song {
 		return songTitle.get();
 	}
 	public void setSongTitle(String s){
-		songTitle.set(s);
+		this.songTitle.set(s);
 	}
 	
 	/*----- get&set methods for songArtist -----*/
@@ -43,7 +43,7 @@ public class Song {
 		return songArtist.get();
 	}
 	public void setSongArtist(String s){
-		songArtist.set(s);
+		this.songArtist.set(s);
 	}
 	
 	/*----- get&set methods for albumTitle -----*/
@@ -51,7 +51,7 @@ public class Song {
 		return albumTitle.get();
 	}
 	public void setAlbumTitle(String s){
-		albumTitle.set(s);
+		this.albumTitle.set(s);
 	}
 	
 	/*----- get&set methods for albumYear -----*/
@@ -59,12 +59,10 @@ public class Song {
 		return albumYear.get();
 	}
 	public void setAlbumYear(String s){
-		albumYear.set(s);
+		this.albumYear.set(s);
 	}
 	
-	public String toString(){
-		return (songTitle.get() + ", by " + songArtist.get());
-	}
+
 	
 	
 	

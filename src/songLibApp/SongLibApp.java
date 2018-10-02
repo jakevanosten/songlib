@@ -54,10 +54,7 @@ public class SongLibApp extends Application {
 	}
 	
 		
-		/*FXMLLoader loader = new FXMLLoader();   
-		loader.setLocation(
-				getClass().getResource("/view/SongLib.fxml"));
-		*/
+		
 		
 
 		//Setting the top, bottom, center, right and left nodes of the pane

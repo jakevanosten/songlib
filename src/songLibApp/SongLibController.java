@@ -19,7 +19,11 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
+//import view.String;
+//import view.ListView;
+//import view.String;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 
@@ -59,26 +63,49 @@ public class SongLibController {
 		@FXML Button buttAdd;
 		@FXML Button buttDelete;
 		@FXML Button buttEdit;
+		@FXML TableView<Song> songList; 
+		@FXML TableColumn<Song, String> titlecol;
+		@FXML TableColumn<Song, String> artistcol;
+	 
 	
-
-	private TableView<Song> library;
-	private ObservableList<Song> data;
+	  
 	
+	
+	
+	@SuppressWarnings("unchecked")
 	public void start(Stage primaryStage) {
 	
+		
 		/*----- Song Library Title Label -----*/
-		Label label = new Label("Song Library");
-		label.setTextFill(Color.FIREBRICK);
-		label.setFont(Font.font("Calibri", FontWeight.BOLD, 36));
-		HBox titleBox = new HBox();
-		titleBox.setAlignment(Pos.CENTER);
-		titleBox.getChildren().add(label);
-	
-		/*----- Table view, data, columns and other properties -----*/
-		library = new TableView<>();
-		data = getInitialTableData();
-		library.setItems(data);
-
+			/*
+				Label label = new Label("Song Library");
+				label.setTextFill(Color.FIREBRICK);
+				label.setFont(Font.font("Calibri", FontWeight.BOLD, 36));
+				HBox titleBox = new HBox();
+				titleBox.setAlignment(Pos.CENTER);
+				titleBox.getChildren().add(label);
+			 */
+		
+		
+		/*----- PREPARES THE COLUMNS for DATA INPUT -----*/
+		/*---- DEFAULT DATA LIVES IN DATASOURCE CLASS -----*/
+		PropertyValueFactory<Song, String> songTitleProperty = 
+		          new PropertyValueFactory<Song, String>("songTitle");
+		PropertyValueFactory<Song, String> songArtistProperty = 
+		          new PropertyValueFactory<Song, String>("songArtist");
+		
+		titlecol.setCellValueFactory(songTitleProperty);
+	      artistcol.setCellValueFactory(songArtistProperty);
+		
+	      
+	      DataSource data = new DataSource();
+	      ObservableList<Song> tableItems = data.getData();
+	      songList.setItems(tableItems);
+	            
+		
+		  
+		
+		
 	}
 	
 	public void add(ActionEvent e) {
@@ -92,7 +119,11 @@ public class SongLibController {
 	public void delete(ActionEvent e) {
 		//removes a song from the songlist
 	}
+
 	
+	
+	
+	/*
 	private ObservableList<Song> getInitialTableData() {
 		
 		List<Song> list = new ArrayList<>();
@@ -101,10 +132,10 @@ public class SongLibController {
 		list.add(new Song("24k Magic", "Bruno Mars", "24K Magic", "2016"));
 		list.add(new Song("Finesse", "Bruno Mars", "24K Magic", "2016"));
 		
-		ObservableList<Song> data = FXCollections.observableList(list);
+		ObservableList<Song> data = FXCollections.observableArrayList(list);
 
 		return data;
 	}
-	
+	*/
 	
 }
