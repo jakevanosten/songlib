@@ -139,7 +139,7 @@ public class SongLibController {
 		String albYear = "Unknown";
 		
 		if (newTitleField.getText().isEmpty() || newArtistField.getText().isEmpty()) {
-			addErrorAlert();
+			fullSongErrorAlert();
 		}else {
 			if(!newAlbumField.getText().isEmpty()) { albName = newAlbumField.getText();}
 			if(!newYearField.getText().isEmpty()) { albYear = newYearField.getText();}
@@ -163,13 +163,18 @@ public class SongLibController {
 				newAlbumField.clear();
 				newYearField.clear();
 			}
+			
 		}
+		titlecol.setSortType(TableColumn.SortType.ASCENDING);
+		songList.getSortOrder().add(titlecol);
+		titlecol.setSortable(true);
+		songList.sort();
 	}
 	
-	private void addErrorAlert() {                
+	private void fullSongErrorAlert() {                
 	      Alert alert = 
 	         new Alert(AlertType.INFORMATION);
-	      alert.setTitle("Error With Add");
+	      alert.setTitle("Error - Not Full Song");
 	      alert.setHeaderText("Cannot add song without title AND artist.");
 	      
 	      String content = "Please enter at least title and artist to add.";
@@ -212,6 +217,7 @@ public class SongLibController {
 	}
 	
 	public void save(ActionEvent e){
+		int sameSongFlag = 0;
 		
 		Song selectedSong = songList.getSelectionModel().getSelectedItem();
 		 int index = songList.getSelectionModel().getSelectedIndex(); 
@@ -221,14 +227,29 @@ public class SongLibController {
 		 String editAlbum1 = String.valueOf(sAlbum.getText());
 		 String editYear1 = String.valueOf(sYear.getText());
 		 
-		 selectedSong.setSongTitle(editTitle1);
-		 selectedSong.setSongArtist(editArtist1);
-		 selectedSong.setAlbumTitle(editAlbum1);
-		 selectedSong.setAlbumYear(editYear1);
+		 if(editTitle1.isEmpty() || editArtist1.isEmpty()) {
+			 fullSongErrorAlert();
+			 
+		 }else {
+		 
+			 for(Song s: tableItems) {
+				 if(s.getSongTitle().equals(editTitle1)  && s.getSongArtist().equals(editArtist1)) {
+					 	sameSongAlert();
+					 	sameSongFlag = 1;
+					 	break;
+				}
+			 }
+		 
+			if(sameSongFlag == 0) {
+			selectedSong.setSongTitle(editTitle1);
+			selectedSong.setSongArtist(editArtist1);
+			selectedSong.setAlbumTitle(editAlbum1);
+			selectedSong.setAlbumYear(editYear1);
 		 
 		 
-		 tableItems.set(index, selectedSong);
-			
+			tableItems.set(index, selectedSong);
+			}
+		 }
 	}
 	
 	public void delete(ActionEvent e) {
@@ -247,7 +268,7 @@ public class SongLibController {
 	    	songList.getSelectionModel().clearAndSelect(index-1);
 	    	displayInfo(tableItems.get(index-1));
 	    	tableItems.remove(selectedSong);
-	    }
+	    } 
 	}
 
 	public void saveToFile() 

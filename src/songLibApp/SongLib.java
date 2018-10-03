@@ -39,14 +39,14 @@ import java.util.Scanner;
 
 
 
-public class SongLibApp extends Application {
+public class SongLib extends Application {
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException {
 				
 		/*---- Loading in FXML and starting up the scene ----*/
 		FXMLLoader loader = new FXMLLoader();
-		loader.setLocation(getClass().getResource("SongLib.fxml"));
+		loader.setLocation(getClass().getResource("SLib.fxml"));
 		BorderPane root = (BorderPane) loader.load();
 		
 		SongLibController libraryController = loader.getController();
