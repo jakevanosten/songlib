@@ -1,3 +1,6 @@
+//CS 213 Assignment 1
+//Jake Van Osten (jrv89) & Tiffany Moral (tm558)
+
 package songLibApp;
 
 import java.io.IOException;
@@ -7,7 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-
 
 
 public class SongLib extends Application {

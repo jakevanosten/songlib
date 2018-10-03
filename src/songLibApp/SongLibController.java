@@ -1,4 +1,8 @@
+//CS 213 Assignment 1
+//Jake Van Osten (jrv89) & Tiffany Moral (tm558)
+
 package songLibApp;
+
 
 
 import java.util.Scanner;
@@ -91,6 +95,7 @@ public class SongLibController {
         sYear.clear();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public void add(ActionEvent e) {
 		
 		int sameSongFlag = 0;
@@ -124,10 +129,12 @@ public class SongLibController {
 			}
 			
 		}
+
 		titlecol.setSortType(TableColumn.SortType.ASCENDING);
-		songList.getSortOrder().add(titlecol);
-		titlecol.setSortable(true);
-		songList.sort();
+		artistcol.setSortType(TableColumn.SortType.ASCENDING);
+		songList.getSortOrder().setAll(titlecol, artistcol);
+		songList.getSortOrder().addAll(titlecol,artistcol);
+		
 	}
 	
 	private void fullSongErrorAlert() {                

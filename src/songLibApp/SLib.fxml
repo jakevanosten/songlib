@@ -12,6 +12,7 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
+<!-- CS 213 Assignment 1 Jake Van Osten (jrv89) & Tiffany Moral (tm558) -->
 
 <BorderPane 
 	xmlns="http://javafx.com/javafx/8.0.60" 

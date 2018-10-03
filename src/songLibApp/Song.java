@@ -1,10 +1,13 @@
+//CS 213 Assignment 1
+//Jake Van Osten (jrv89) & Tiffany Moral (tm558)
+
 package songLibApp;
 
 
 import javafx.beans.property.SimpleStringProperty;
 
 
-public class Song {
+public class Song{
 
 	private SimpleStringProperty songTitle;
 	private SimpleStringProperty songArtist;
@@ -63,10 +66,6 @@ public class Song {
 	public void setAlbumYear(String s){
 		this.albumYear.set(s);
 	}
-	
-
-	
-	
-	
+   
 	
 }
