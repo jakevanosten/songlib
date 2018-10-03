@@ -72,6 +72,7 @@ public class SongLibController {
 	@FXML Button buttAdd;
 	@FXML Button buttDelete;
 	@FXML Button buttEdit;
+	@FXML Button saveEdit;
 	@FXML TableView<Song> songList; 
 	@FXML TableColumn<Song, String> titlecol;
 	@FXML TableColumn<Song, String> artistcol;
@@ -116,33 +117,82 @@ public class SongLibController {
 	          return row;
 	    });
 		
+	    
+	  
 	}
  
 	
-	public void add(ActionEvent e) {
+public void add(ActionEvent e) {
+		
+		int sameSongFlag = 0;
 		String albName = "Unknown";
 		String albYear = "Unknown";
 		
-		//Error checks: title and artist need to be there AND cant have same name and artist
-		
-		if (newTitleField.getText() == null || newArtistField.getText() == null) {
-		     //need to throw alert message saying responses NEED to be in these fields
+		if (newTitleField.getText().isEmpty() || newArtistField.getText().isEmpty()) {
+			addErrorAlert();
 		}else {
-			if(newAlbumField.getText() != null) { albName = newAlbumField.getText();}
-			if(newYearField.getText() != null) { albYear = newYearField.getText();}
+			if(!newAlbumField.getText().isEmpty()) { albName = newAlbumField.getText();}
+			if(!newYearField.getText().isEmpty()) { albYear = newYearField.getText();}
+		
+			for(Song s: tableItems) {
+				if(s.getSongTitle().equals(newTitleField.getText())  && s.getSongArtist().equals(newArtistField.getText())) {
+						sameSongAlert();
+						sameSongFlag = 1;
+						break;
+				}
+			}
+		
+			if(sameSongFlag == 0) {
+				Song newSong = new Song(newTitleField.getText(),newArtistField.getText(),albName,albYear);
+				tableItems.add(newSong);
+		
+				newTitleField.clear();
+				newArtistField.clear();
+				newAlbumField.clear();
+				newYearField.clear();
+			}
 		}
-		
-		Song newSong = new Song(newTitleField.getText(),newArtistField.getText(),albName,albYear);
-		tableItems.add(newSong);
-		
-		newTitleField.clear();
-		newArtistField.clear();
-		newAlbumField.clear();
-		newYearField.clear();
 	}
 	
+	private void addErrorAlert() {                
+	      Alert alert = 
+	         new Alert(AlertType.INFORMATION);
+	      alert.setTitle("Error With Add");
+	      alert.setHeaderText("Cannot add song without title AND artist.");
+	      
+	      String content = "Please enter at least title and artist to add.";
+	          alert.setContentText(content);
+	          alert.showAndWait();
+	   }
+	
+	private void sameSongAlert() {                
+	      Alert alert = 
+	         new Alert(AlertType.INFORMATION);
+	      alert.setTitle("Error - Song Already Exists");
+	      alert.setHeaderText("This song is already in the library.");
+	      alert.showAndWait();
+	   }
+	
 	public void edit(ActionEvent e) {
-		//edits fields of specific selected song
+		 
+		/*
+		
+		String item =  Song.sTitle.getSelectionModel().getSelectedItem();
+		 int index = songList.getSelectionModel().getSelectedIndex();
+		 TextInputDialog dialog = new TextInputDialog(item);
+		 dialog.initOwner(mainStage); dialog.setTitle("List Item");
+		 dialog.setHeaderText("Selected Item (Index: " + index + ")");
+		 dialog.setContentText("Enter name: ");
+		 Optional<String> result = dialog.showAndWait();
+		 if (result.isPresent()) { obsList.set(index, result.get()); 
+		  */
+	}
+	
+	
+	
+	
+	public void save(ActionEvent e){
+		songList.setItems(tableItems);
 	}
 	
 	public void delete(ActionEvent e) {
