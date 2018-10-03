@@ -1,67 +1,26 @@
 package songLibApp;
 
-import java.util.Optional;
-import java.util.Scanner;
 
+import java.util.Scanner;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Path;
-import javafx.scene.text.*;
-import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-
-
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.layout.HBox;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
-import javafx.scene.paint.Color;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.control.TableColumn;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import java.util.List;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
-import javafx.scene.control.cell.TextFieldTableCell;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableRow;
-import javafx.fxml.FXMLLoader;
-
 
 
 public class SongLibController {
@@ -233,6 +192,9 @@ public class SongLibController {
 		 }else {
 		 
 			 for(Song s: tableItems) {
+				 if(s.equals(selectedSong)) {
+					 continue;
+				 }
 				 if(s.getSongTitle().equals(editTitle1)  && s.getSongArtist().equals(editArtist1)) {
 					 	sameSongAlert();
 					 	sameSongFlag = 1;
@@ -248,6 +210,10 @@ public class SongLibController {
 		 
 		 
 			tableItems.set(index, selectedSong);
+			sTitle.setEditable(false);
+			sArtist.setEditable(false);
+			sAlbum.setEditable(false);
+			sYear.setEditable(false);
 			}
 		 }
 	}
