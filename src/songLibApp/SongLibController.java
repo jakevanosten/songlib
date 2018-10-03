@@ -47,6 +47,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -68,22 +69,22 @@ public class SongLibController {
 	/* controller: deals with event handling logic */
 	
 	/* FXML Widget IDs that will format the widgets within bottom HBox */
-		@FXML Button buttAdd;
-		@FXML Button buttDelete;
-		@FXML Button buttEdit;
-		@FXML TableView<Song> songList; 
-		@FXML TableColumn<Song, String> titlecol;
-		@FXML TableColumn<Song, String> artistcol;
-		@FXML TextField newTitleField;
-		@FXML TextField newArtistField;
-		@FXML TextField newAlbumField;
-		@FXML TextField newYearField;
-		@FXML TextField sTitle;
-		@FXML TextField sArtist;
-		@FXML TextField sAlbum;
-		@FXML TextField sYear;
+	@FXML Button buttAdd;
+	@FXML Button buttDelete;
+	@FXML Button buttEdit;
+	@FXML TableView<Song> songList; 
+	@FXML TableColumn<Song, String> titlecol;
+	@FXML TableColumn<Song, String> artistcol;
+	@FXML TextField newTitleField;
+	@FXML TextField newArtistField;
+	@FXML TextField newAlbumField;
+	@FXML TextField newYearField;
+	@FXML TextField sTitle;
+	@FXML TextField sArtist;
+	@FXML TextField sAlbum;
+	@FXML TextField sYear;
 		
-		ObservableList<Song> tableItems = FXCollections.observableArrayList();
+	ObservableList<Song> tableItems = FXCollections.observableArrayList();
 	
 	public void start(Stage primaryStage) throws IOException{
 			
@@ -95,28 +96,25 @@ public class SongLibController {
 		          new PropertyValueFactory<Song, String>("songArtist");
 		
 		titlecol.setCellValueFactory(songTitleProperty);
-	      artistcol.setCellValueFactory(songArtistProperty);
+	    artistcol.setCellValueFactory(songArtistProperty);
 		
-	    //DEFAULT SONGS -- MUST REMOVE FOR FINAL TESTING
-			tableItems.add(new Song("Versace on the Floor", "Bruno Mars"));
-			tableItems.add(new Song("24K Magic", "Bruno Mars"));
-			tableItems.add(new Song("That's What I Like", "Bruno Mars"));
-			
-	      songList.setItems(tableItems);
+	    loadFileToList();
+	      
+	    songList.setItems(tableItems);
 	     	
-	      songList.setRowFactory(tv -> {
-	            TableRow<Song> row = new TableRow<>();
-	            row.setOnMouseClicked(event -> {
-	                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
-	                    Song rowSong = row.getItem();
-	                    sTitle.setText(rowSong.getSongTitle());
-	                    sArtist.setText(rowSong.getSongArtist());
-	                    sAlbum.setText(rowSong.getAlbumTitle());
-	                    sYear.setText(rowSong.getAlbumYear());
-	                }
-	            });
-	            return row;
-	      });
+	    songList.setRowFactory(tv -> {
+	          TableRow<Song> row = new TableRow<>();
+	          row.setOnMouseClicked(event -> {
+	              if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+	                  Song rowSong = row.getItem();
+	                  sTitle.setText(rowSong.getSongTitle());
+	                  sArtist.setText(rowSong.getSongArtist());
+	                  sAlbum.setText(rowSong.getAlbumTitle());
+	                  sYear.setText(rowSong.getAlbumYear());
+	              }
+	          });
+	          return row;
+	    });
 		
 	}
  
@@ -151,35 +149,34 @@ public class SongLibController {
 		//removes a song from the songlist
 	}
 
-	// --------NEW FILE SAVER -------
 		public void saveToFile() 
 				  throws IOException {
 				
 				    PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("savedSongs.txt")));
-				    for(Song s: tableItems) {
-				    	writer.write(s.getSongTitle() + "\n");
-				        writer.write(s.getSongArtist() + "\n");
-				    	writer.write(s.getAlbumTitle() + "\n");
-				    	writer.write(s.getAlbumYear() + "\n");
+				    if(tableItems != null) {
+				    	for(Song s: tableItems) {
+				    		writer.write(s.getSongTitle() + "\n");
+				    		writer.write(s.getSongArtist() + "\n");
+				    		writer.write(s.getAlbumTitle() + "\n");
+				    		writer.write(s.getAlbumYear() + "\n");
+				    	}
 				    }
 				    writer.close();
 				}
 		
 		public void loadFileToList() {
 			//New material for parsing the file to use previously saved songs
-		/*
-				File savedSongs = File.get("savedSongs.txt");
-				
 				try {
+					File savedSongs = new File("savedSongs.txt");
 					@SuppressWarnings("resource")
-					Scanner fileScan = new Scanner(savedSongsPath).useDelimiter("\n");
+					Scanner fileScan = new Scanner(savedSongs).useDelimiter("\n");
 					while(fileScan.hasNext()) {
 						tableItems.add(new Song(fileScan.next(), fileScan.next(), fileScan.next(), fileScan.next()));
 					}
 				} catch (FileNotFoundException e) {
-					e.printStackTrace();
+					tableItems = null;
 				}
-			*/	
+			
 			
 		}
 	
