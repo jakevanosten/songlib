@@ -1,6 +1,7 @@
 package songLibApp;
 
 import java.util.Optional;
+import java.util.Scanner;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,6 +18,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Path;
 import javafx.scene.text.*;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
@@ -45,9 +47,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
 import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -81,7 +85,7 @@ public class SongLibController {
 		
 		ObservableList<Song> tableItems = FXCollections.observableArrayList();
 	
-	public void start(Stage primaryStage) throws IOException {
+	public void start(Stage primaryStage) throws IOException{
 			
 		/*----- PREPARES THE COLUMNS for DATA INPUT -----*/
 		/*---- DEFAULT DATA LIVES IN DATASOURCE CLASS -----*/
@@ -120,10 +124,8 @@ public class SongLibController {
 	public void add(ActionEvent e) {
 		String albName = "Unknown";
 		String albYear = "Unknown";
-		//first click display the form for adding
-		//if already displayed, must have title and artist filled with something before song is created
-		//if both are there, need to grab all the fields and save them as local vars.
-		//then create newSong from them and add to obsList (tableItems)
+		
+		//Error checks: title and artist need to be there AND cant have same name and artist
 		
 		if (newTitleField.getText() == null || newArtistField.getText() == null) {
 		     //need to throw alert message saying responses NEED to be in these fields
@@ -134,6 +136,7 @@ public class SongLibController {
 		
 		Song newSong = new Song(newTitleField.getText(),newArtistField.getText(),albName,albYear);
 		tableItems.add(newSong);
+		
 		newTitleField.clear();
 		newArtistField.clear();
 		newAlbumField.clear();
@@ -164,8 +167,8 @@ public class SongLibController {
 		
 		public void loadFileToList() {
 			//New material for parsing the file to use previously saved songs
-			 /*
-				Path savedSongsPath = Paths.get("savedSongs.txt");
+		/*
+				File savedSongs = File.get("savedSongs.txt");
 				
 				try {
 					@SuppressWarnings("resource")
@@ -176,8 +179,8 @@ public class SongLibController {
 				} catch (FileNotFoundException e) {
 					e.printStackTrace();
 				}
-				
-			*/
+			*/	
+			
 		}
 	
 }

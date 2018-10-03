@@ -18,6 +18,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -56,22 +57,18 @@ public class SongLibApp extends Application {
 		primaryStage.setTitle("Song Library");  
 		primaryStage.show();
 		
-		stop(libraryController);
+		primaryStage.setOnCloseRequest((WindowEvent event1) -> {
+			try {
+				libraryController.saveToFile();
+			} catch (IOException e) {
+				System.out.println("Song file not saved.");
+			} 
+	    });
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
-	//creates a save file for songs before the app closes
-
-	public void stop(SongLibController lc) {
-		try {
-			lc.saveToFile();
-		} catch (IOException e) {
-			System.out.println("Song file not saved.");
-			Platform.exit();
-		}
-	}
 
 }
