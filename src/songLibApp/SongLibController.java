@@ -149,35 +149,37 @@ public class SongLibController {
 		//removes a song from the songlist
 	}
 
-		public void saveToFile() 
-				  throws IOException {
+	public void saveToFile() 
+		  throws IOException {
 				
-				    PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("savedSongs.txt")));
-				    if(tableItems != null) {
-				    	for(Song s: tableItems) {
-				    		writer.write(s.getSongTitle() + "\n");
-				    		writer.write(s.getSongArtist() + "\n");
-				    		writer.write(s.getAlbumTitle() + "\n");
-				    		writer.write(s.getAlbumYear() + "\n");
-				    	}
-				    }
-				    writer.close();
-				}
+			    PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("savedSongs.txt")));
+			    if(tableItems != null) {
+			    	for(Song s: tableItems) {
+			    		writer.write(s.getSongTitle() + "\n");
+			    		writer.write(s.getSongArtist() + "\n");
+			    		writer.write(s.getAlbumTitle() + "\n");
+			    		writer.write(s.getAlbumYear() + "\n");
+			    	}
+			    }
+			    writer.close();
+			}
 		
-		public void loadFileToList() {
-			//New material for parsing the file to use previously saved songs
-				try {
-					File savedSongs = new File("savedSongs.txt");
-					@SuppressWarnings("resource")
-					Scanner fileScan = new Scanner(savedSongs).useDelimiter("\n");
-					while(fileScan.hasNext()) {
-						tableItems.add(new Song(fileScan.next(), fileScan.next(), fileScan.next(), fileScan.next()));
-					}
-				} catch (FileNotFoundException e) {
-					tableItems = null;
+	@SuppressWarnings("resource")
+	public void loadFileToList() {
+		//New material for parsing the file to use previously saved songs
+			try {
+				File savedSongs = new File("savedSongs.txt");
+			
+				Scanner fileScan = new Scanner(savedSongs).useDelimiter("\n");
+				while(fileScan.hasNext()) {
+					tableItems.add(new Song(fileScan.next(), fileScan.next(), fileScan.next(), fileScan.next()));
 				}
+				fileScan.close();
+			} catch (FileNotFoundException e) {
+				System.out.println("No songs in list currently");
+			}
 			
 			
-		}
+	}
 	
 }
