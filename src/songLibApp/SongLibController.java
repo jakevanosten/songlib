@@ -113,9 +113,27 @@ public class SongLibController {
  
 	
 	public void add(ActionEvent e) {
-		//adds new song to songlist
-		Song newSong = new Song();
+		String albName = "Unknown";
+		String albYear = "Unknown";
+		//first click display the form for adding
+		//if already displayed, must have title and artist filled with something before song is created
+		//if both are there, need to grab all the fields and save them as local vars.
+		//then create newSong from them and add to obsList (tableItems)
+		
+		if (newTitleField.getText() == null || newArtistField.getText() == null) {
+		     //need to throw alert message saying responses NEED to be in these fields
+		}else {
+			if(newAlbumField.getText() != null) { albName = newAlbumField.getText();}
+			if(newYearField.getText() != null) { albYear = newYearField.getText();}
+		}
+		
+		Song newSong = new Song(newTitleField.getText(),newArtistField.getText(),albName,albYear);
 		tableItems.add(newSong);
+		
+		newTitleField.clear();
+		newArtistField.clear();
+		newAlbumField.clear();
+		newYearField.clear();
 	}
 	
 	public void edit(ActionEvent e) {
