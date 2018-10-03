@@ -21,8 +21,8 @@
 	<left>
 		 <TableView fx:id="songList" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="400.0">
          	<columns>
-            	 <TableColumn fx:id="titlecol" prefWidth="225.0" text="Song Title" />
-            	<TableColumn fx:id="artistcol" prefWidth="175.0" text="Artist" />
+            	 <TableColumn fx:id="titlecol" prefWidth="225.0" text="Song Title"/>
+            	<TableColumn fx:id="artistcol" prefWidth="175.0" text="Artist"/>
             	
          	</columns>
       	 </TableView>
@@ -38,6 +38,16 @@
 			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			<Text text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
 			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			
+			<Text text="New Title: " GridPane.columnIndex="0" GridPane.rowIndex="20"/>
+			<TextField fx:id="newTitleField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="20"/>
+			<Text text="New Artist: " GridPane.columnIndex="0" GridPane.rowIndex="21"/>
+			<TextField fx:id="newArtistField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="21"/>
+			<Text text="New Album: " GridPane.columnIndex="0" GridPane.rowIndex="22"/>
+			<TextField fx:id="newAlbumField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="22"/>
+			<Text text="New Year: " GridPane.columnIndex="0" GridPane.rowIndex="23"/>
+			<TextField fx:id="newYearField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="23"/>
+			
 			<padding>
 				<Insets bottom="10" left="10" right="10" top="10" />
 			</padding>

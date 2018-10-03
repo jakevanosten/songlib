@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -19,9 +20,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.*;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
-//import view.String;
-//import view.ListView;
-//import view.String;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ChangeListener;
@@ -67,9 +65,11 @@ public class SongLibController {
 		@FXML TableView<Song> songList; 
 		@FXML TableColumn<Song, String> titlecol;
 		@FXML TableColumn<Song, String> artistcol;
+		@FXML TextField newTitleField;
+		@FXML TextField newArtistField;
+		@FXML TextField newAlbumField;
+		@FXML TextField newYearField;
 	
-	
-	@SuppressWarnings("unchecked")
 	public void start(Stage primaryStage) throws IOException {
 			
 		/*----- PREPARES THE COLUMNS for DATA INPUT -----*/
@@ -92,12 +92,13 @@ public class SongLibController {
 	
 	public void selectSong(ActionEvent e) {
 		Song s = (Song)e.getSource();
-		
+		System.out.println("You tried selecting a song!");
 	}
 	
 	
 	public void add(ActionEvent e) {
 		//adds new song to songlist
+		
 	}
 	
 	public void edit(ActionEvent e) {
