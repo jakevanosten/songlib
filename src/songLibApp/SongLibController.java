@@ -49,7 +49,9 @@ import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.cell.TextFieldTableCell;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.control.TableColumn.CellEditEvent;
+import javafx.scene.control.TableRow;
 import javafx.fxml.FXMLLoader;
 
 
@@ -87,14 +89,18 @@ public class SongLibController {
 	      ObservableList<Song> tableItems = data.getData();
 	      songList.setItems(tableItems);
 	     	
+	      songList.setRowFactory(tv -> {
+	            TableRow<Song> row = new TableRow<>();
+	            row.setOnMouseClicked(event -> {
+	                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
+	                    Song rowData = row.getItem();
+	                    System.out.println("Selected: "+rowData.getSongTitle());
+	                }
+	            });
+	            return row;
+	      });
 		
 	}
-	
-	public void selectSong(ActionEvent e) {
-		Song s = (Song)e.getSource();
-		System.out.println("You tried selecting a song!");
-	}
-	
 	
 	public void add(ActionEvent e) {
 		//adds new song to songlist
