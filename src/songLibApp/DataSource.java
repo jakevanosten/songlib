@@ -38,8 +38,8 @@ public class DataSource {
 		
 			//DEFAULT SONGS -- MUST REMOVE FOR FINAL TESTING
 			data.add(new Song("Versace on the Floor", "Bruno Mars"));
-			data.add(new Song("24K Magic", "Mruno Bars"));
-			data.add(new Song("That's What I Like", "Rbuno Amars"));
+			data.add(new Song("24K Magic", "Bruno Mars"));
+			data.add(new Song("That's What I Like", "Bruno Mars"));
 		
 	}
 

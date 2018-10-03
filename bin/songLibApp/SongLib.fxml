@@ -30,14 +30,14 @@
 	
 	<right>
 		<GridPane fx:id="songDetails" prefWidth="300.0" hgap="10" vgap="10">
-			<Text text="Title: " GridPane.valignment="BOTTOM" />
-			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+			<Text text="Title: " GridPane.valignment="BOTTOM"/>
+			<TextField editable="false" fx:id="sTitle" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
 			<Text text="Artist: " GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.valignment="BOTTOM" />
-			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+			<TextField editable="false" fx:id="sArtist" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
 			<Text text="Album: " GridPane.columnIndex="0" GridPane.rowIndex="2" GridPane.valignment="BOTTOM" />
-			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+			<TextField editable="false" fx:id="sAlbum" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			<Text text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
-			<Text text="nothing" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<TextField editable="false" fx:id="sYear" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 			
 			<Text text="New Title: " GridPane.columnIndex="0" GridPane.rowIndex="20"/>
 			<TextField fx:id="newTitleField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="20"/>

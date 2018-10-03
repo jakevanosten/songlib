@@ -37,7 +37,6 @@ import java.util.Scanner;
 
 
 
-
 public class SongLibApp extends Application {
 	@Override
 	public void start(Stage primaryStage) 
@@ -86,7 +85,5 @@ public class SongLibApp extends Application {
 			Platform.exit();
 		}
 	}
-	
-
 
 }

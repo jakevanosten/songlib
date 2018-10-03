@@ -71,6 +71,12 @@ public class SongLibController {
 		@FXML TextField newArtistField;
 		@FXML TextField newAlbumField;
 		@FXML TextField newYearField;
+		@FXML TextField sTitle;
+		@FXML TextField sArtist;
+		@FXML TextField sAlbum;
+		@FXML TextField sYear;
+		
+		ObservableList<Song> tableItems;
 	
 	public void start(Stage primaryStage) throws IOException {
 			
@@ -86,7 +92,7 @@ public class SongLibController {
 		
 	      
 	      DataSource data = new DataSource();
-	      ObservableList<Song> tableItems = data.getData();
+	      tableItems = data.getData();
 	      songList.setItems(tableItems);
 	     	
 	      songList.setRowFactory(tv -> {
@@ -94,17 +100,19 @@ public class SongLibController {
 	            row.setOnMouseClicked(event -> {
 	                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
 	                    Song rowData = row.getItem();
-	                    System.out.println("Selected: "+rowData.getSongTitle());
+	                    System.out.println("Selected: "+ rowData.getSongTitle());
 	                }
 	            });
 	            return row;
 	      });
 		
 	}
+ 
 	
 	public void add(ActionEvent e) {
 		//adds new song to songlist
-		
+		Song newSong = new Song();
+		tableItems.add(newSong);
 	}
 	
 	public void edit(ActionEvent e) {
