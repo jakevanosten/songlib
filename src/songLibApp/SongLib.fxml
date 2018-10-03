@@ -39,6 +39,7 @@
 			<Text text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
 			<TextField editable="false" fx:id="sYear" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
 			
+			<!--
 			<Text text="New Title: " GridPane.columnIndex="0" GridPane.rowIndex="20"/>
 			<TextField fx:id="newTitleField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="20"/>
 			<Text text="New Artist: " GridPane.columnIndex="0" GridPane.rowIndex="21"/>
@@ -47,6 +48,7 @@
 			<TextField fx:id="newAlbumField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="22"/>
 			<Text text="New Year: " GridPane.columnIndex="0" GridPane.rowIndex="23"/>
 			<TextField fx:id="newYearField" prefColumnCount="7" promptText="blah" GridPane.columnIndex="1" GridPane.rowIndex="23"/>
+			-->
 			
 			<padding>
 				<Insets bottom="10" left="10" right="10" top="10" />
@@ -58,9 +60,12 @@
 		<!-- maybe fix alignment and spacing to center under songlist -->
 		<HBox fx:id="buttonBar" prefHeight="60.0" prefWidth="300.0" BorderPane.alignment="CENTER">
 			<children>
+				<TextField fx:id="newTitleField" prefColumnCount="7" promptText="New Song Title" />
+				<TextField fx:id="newArtistField" prefColumnCount="7" promptText="New Artist" />
+				<TextField fx:id="newAlbumField" prefColumnCount="7" promptText="New Album" />
+				<TextField fx:id="newYearField" prefColumnCount="7" promptText="New Album Year" />
 				<Button fx:id="buttAdd" onAction="#add" text="Add"/>
-				<Button fx:id="buttEdit" onAction="#edit" text="Edit"/>
-				<Button fx:id="buttDelete" onAction="#delete" text="Delete"/>
+			
 			</children>
 		</HBox>
 	</bottom>
