@@ -38,6 +38,7 @@
 			<TextField editable="false" fx:id="sAlbum" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
 			<Text text="Year: " GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.valignment="BOTTOM" />
 			<TextField editable="false" fx:id="sYear" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+			<Button fx:id="buttEdit" onAction="#edit" text="Edit" GridPane.columnIndex="1" GridPane.rowIndex="4" GridPane.halignment="RIGHT" />
 			
 			<!--
 			<Text text="New Title: " GridPane.columnIndex="0" GridPane.rowIndex="20"/>
