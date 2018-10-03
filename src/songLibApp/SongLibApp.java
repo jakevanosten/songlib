@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 //import javafx.fxml.FXMLLoader;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -41,7 +42,7 @@ public class SongLibApp extends Application {
 	@Override
 	public void start(Stage primaryStage) 
 	throws IOException {
-		
+				
 		/*---- Loading in FXML and starting up the scene ----*/
 		FXMLLoader loader = new FXMLLoader();
 		loader.setLocation(getClass().getResource("SongLib.fxml"));
@@ -54,32 +55,19 @@ public class SongLibApp extends Application {
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("Song Library");  
 		primaryStage.show();
+		
+		stop(libraryController);
 	}
 	
 	public static void main(String[] args) {
 		launch(args);
 	}
 	
-	// --------NEW FILE SAVER -------
-	public void saveToFile() 
-			  throws IOException {
-			
-			    PrintWriter writer = new PrintWriter(new BufferedWriter(new FileWriter("savedSongs.txt")));
-			    DataSource data = new DataSource();
-			    ObservableList<Song> songList = data.getData();
-			    for(Song s: songList) {
-			    	writer.write(s.getSongTitle() + "\n");
-			        writer.write(s.getSongArtist() + "\n");
-			    	writer.write(s.getAlbumTitle() + "\n");
-			    	writer.write(s.getAlbumYear() + "\n");
-			    }
-			    writer.close();
-			}
-	
 	//creates a save file for songs before the app closes
-	public void stop() {
+
+	public void stop(SongLibController lc) {
 		try {
-			saveToFile();
+			lc.saveToFile();
 		} catch (IOException e) {
 			System.out.println("Song file not saved.");
 			Platform.exit();
