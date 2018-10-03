@@ -14,6 +14,18 @@
 
 <!-- CS 213 Assignment 1 Jake Van Osten (jrv89) & Tiffany Moral (tm558) -->
 
+
+
+<!-- Song Library Assignment
+	 CS213 Soft Meth
+	 
+	 Project Done by:
+	 		 Tiffany Moral (tm558)
+	 		 Jake Van Osten (jrv89) -->
+
+
+
+<!-- ******************* FXML BEGINS ******************* -->
 <BorderPane 
 	xmlns="http://javafx.com/javafx/8.0.60" 
 	xmlns:fx="http://javafx.com/fxml/1" 

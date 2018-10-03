@@ -27,6 +27,20 @@ import java.io.PrintWriter;
 import javafx.scene.control.TableRow;
 
 
+/*
+ * Song Library Assignment
+ * CS213 Soft Meth
+ * 
+ * Project Done by:
+ * Tiffany Moral (tm558)
+ * Jake Van Osten (jrv89)
+ * 
+ * 
+ */
+
+
+
+
 public class SongLibController {
 
 	/* controller: deals with event handling logic */
