@@ -9,6 +9,17 @@ import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
 
+/*
+ * Song Library Assignment
+ * CS213 Soft Meth
+ * 
+ * Project Done by:
+ * Tiffany Moral (tm558)
+ * Jake Van Osten (jrv89)
+ * 
+ * 
+ */
+
 
 public class SongLib extends Application {
 	@Override

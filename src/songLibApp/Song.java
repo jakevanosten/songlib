@@ -3,6 +3,17 @@ package songLibApp;
 
 import javafx.beans.property.SimpleStringProperty;
 
+/*
+ * Song Library Assignment
+ * CS213 Soft Meth
+ * 
+ * Project Done by:
+ * Tiffany Moral (tm558)
+ * Jake Van Osten (jrv89)
+ * 
+ * 
+ */
+
 
 public class Song {
 
