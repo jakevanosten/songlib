@@ -21,8 +21,8 @@ public class DataSource {
 	
 	public DataSource() throws IOException{
 		
-		/* New material for parsing the file to use previously saved songs
-		 * 
+		//New material for parsing the file to use previously saved songs
+		 
 			Path savedSongsPath = Paths.get("savedSongs.txt");
 			
 			try {
@@ -34,7 +34,7 @@ public class DataSource {
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			}
-			*/
+			
 		
 			//DEFAULT SONGS -- MUST REMOVE FOR FINAL TESTING
 			data.add(new Song("Versace on the Floor", "Bruno Mars"));

@@ -99,8 +99,11 @@ public class SongLibController {
 	            TableRow<Song> row = new TableRow<>();
 	            row.setOnMouseClicked(event -> {
 	                if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
-	                    Song rowData = row.getItem();
-	                    System.out.println("Selected: "+ rowData.getSongTitle());
+	                    Song rowSong = row.getItem();
+	                    sTitle.setText(rowSong.getSongTitle());
+	                    sArtist.setText(rowSong.getSongArtist());
+	                    sAlbum.setText(rowSong.getAlbumTitle());
+	                    sYear.setText(rowSong.getAlbumYear());
 	                }
 	            });
 	            return row;
