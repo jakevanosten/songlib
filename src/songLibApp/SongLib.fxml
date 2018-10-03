@@ -19,10 +19,10 @@
 	fx:controller="songLibApp.SongLibController">
 	
 	<left>
-		 <TableView fx:id="songList" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="400.0">
+		 <TableView fx:id="songList" editable="true" layoutX="14.0" layoutY="14.0" prefHeight="600.0" prefWidth="462.0">
          	<columns>
-            	 <TableColumn fx:id="titlecol" prefWidth="225.0" text="Song Title"/>
-            	<TableColumn fx:id="artistcol" prefWidth="175.0" text="Artist"/>
+            	 <TableColumn fx:id="titlecol" prefWidth="245.0" text="Song Title"/>
+            	<TableColumn fx:id="artistcol" prefWidth="217.0" text="Artist"/>
             	
          	</columns>
       	 </TableView>
