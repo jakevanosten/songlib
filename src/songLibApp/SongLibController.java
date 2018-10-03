@@ -117,7 +117,7 @@ public class SongLibController {
 	          return row;
 	    });
 		
-	    
+	   
 	  
 	}
  
@@ -174,7 +174,10 @@ public void add(ActionEvent e) {
 	   }
 	
 	public void edit(ActionEvent e) {
-		 
+		 sTitle.setEditable(true);
+		 sArtist.setEditable(true);
+		 sAlbum.setEditable(true);
+		 sYear.setEditable(true);
 		/*
 		
 		String item =  Song.sTitle.getSelectionModel().getSelectedItem();
