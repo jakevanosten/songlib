@@ -73,6 +73,7 @@ public class SongLibController {
 	@FXML Button buttDelete;
 	@FXML Button buttEdit;
 	@FXML Button saveEdit;
+	@FXML Button buttCancelAdd;
 	@FXML TableView<Song> songList; 
 	@FXML TableColumn<Song, String> titlecol;
 	@FXML TableColumn<Song, String> artistcol;
@@ -108,10 +109,7 @@ public class SongLibController {
 	          row.setOnMouseClicked(event -> {
 	              if (event.getClickCount() == 1 && (! row.isEmpty()) ) {
 	                  Song rowSong = row.getItem();
-	                  sTitle.setText(rowSong.getSongTitle());
-	                  sArtist.setText(rowSong.getSongArtist());
-	                  sAlbum.setText(rowSong.getAlbumTitle());
-	                  sYear.setText(rowSong.getAlbumYear());
+	                  displayInfo(rowSong);
 	              }
 	          });
 	          return row;
@@ -120,9 +118,21 @@ public class SongLibController {
 	   
 	  
 	}
- 
+	public void displayInfo(Song s) {
+		sTitle.setText(s.getSongTitle());
+        sArtist.setText(s.getSongArtist());
+        sAlbum.setText(s.getAlbumTitle());
+        sYear.setText(s.getAlbumYear());
+	}
 	
-public void add(ActionEvent e) {
+	public void clearInfo() {
+		sTitle.clear();
+        sArtist.clear();
+        sAlbum.clear();
+        sYear.clear();
+	}
+	
+	public void add(ActionEvent e) {
 		
 		int sameSongFlag = 0;
 		String albName = "Unknown";
@@ -145,7 +155,9 @@ public void add(ActionEvent e) {
 			if(sameSongFlag == 0) {
 				Song newSong = new Song(newTitleField.getText(),newArtistField.getText(),albName,albYear);
 				tableItems.add(newSong);
-		
+				songList.getSelectionModel().clearAndSelect(tableItems.size()-1);
+				displayInfo(newSong);
+				
 				newTitleField.clear();
 				newArtistField.clear();
 				newAlbumField.clear();
@@ -173,33 +185,69 @@ public void add(ActionEvent e) {
 	      alert.showAndWait();
 	   }
 	
+	public void cancelAdd(ActionEvent e) {
+		newTitleField.clear();
+		newArtistField.clear();
+		newAlbumField.clear();
+		newYearField.clear();
+	}
+	
 	public void edit(ActionEvent e) {
 		 sTitle.setEditable(true);
 		 sArtist.setEditable(true);
 		 sAlbum.setEditable(true);
-		 sYear.setEditable(true);
-		/*
+		 sYear.setEditable(true);	 
+		 
 		
-		String item =  Song.sTitle.getSelectionModel().getSelectedItem();
-		 int index = songList.getSelectionModel().getSelectedIndex();
-		 TextInputDialog dialog = new TextInputDialog(item);
-		 dialog.initOwner(mainStage); dialog.setTitle("List Item");
-		 dialog.setHeaderText("Selected Item (Index: " + index + ")");
-		 dialog.setContentText("Enter name: ");
-		 Optional<String> result = dialog.showAndWait();
-		 if (result.isPresent()) { obsList.set(index, result.get()); 
-		  */
 	}
 	
-	
-	
+	public void cancelEdit(ActionEvent e) {
+		Song selectedSong = songList.getSelectionModel().getSelectedItem();
+		displayInfo(selectedSong);
+		
+		sTitle.setEditable(false);
+		sArtist.setEditable(false);
+		sAlbum.setEditable(false);
+		sYear.setEditable(false);
+	}
 	
 	public void save(ActionEvent e){
-		songList.setItems(tableItems);
+		
+		Song selectedSong = songList.getSelectionModel().getSelectedItem();
+		 int index = songList.getSelectionModel().getSelectedIndex(); 
+		 
+		 String editTitle1 = String.valueOf(sTitle.getText());
+		 String editArtist1 = String.valueOf(sArtist.getText());
+		 String editAlbum1 = String.valueOf(sAlbum.getText());
+		 String editYear1 = String.valueOf(sYear.getText());
+		 
+		 selectedSong.setSongTitle(editTitle1);
+		 selectedSong.setSongArtist(editArtist1);
+		 selectedSong.setAlbumTitle(editAlbum1);
+		 selectedSong.setAlbumYear(editYear1);
+		 
+		 
+		 tableItems.set(index, selectedSong);
+			
 	}
 	
 	public void delete(ActionEvent e) {
-		//removes a song from the songlist
+		Song selectedSong = songList.getSelectionModel().getSelectedItem();
+	    int index = tableItems.indexOf(selectedSong);
+	    
+	    if(tableItems.size() == 1) {
+	    	tableItems.remove(selectedSong);
+	    	clearInfo();
+	    }
+	    else if(tableItems.size() > index+1) { //can select row after deleted
+	    	songList.getSelectionModel().clearAndSelect(index+1);
+	    	displayInfo(tableItems.get(index+1));
+	    	tableItems.remove(selectedSong);
+	    }else{
+	    	songList.getSelectionModel().clearAndSelect(index-1);
+	    	displayInfo(tableItems.get(index-1));
+	    	tableItems.remove(selectedSong);
+	    }
 	}
 
 	public void saveToFile() 
